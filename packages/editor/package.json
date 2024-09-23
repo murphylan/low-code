@@ -1,0 +1,17 @@
+{
+  "name": "@low-code/editor",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@low-code/components": "^1.0.0",
+    "react": "^18",
+    "typescript": "^5.6.2"
+  }
+}
