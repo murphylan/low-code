@@ -1,13 +1,13 @@
 import React from 'react';
 import { Editor, Frame, Element } from '@craftjs/core';
-import { Button } from '@low-code/components';
+import { UserComponents } from '@low-code/components';
 import { Layout } from 'antd';
 
 const { Header, Footer, Sider, Content } = Layout;
 
 export const Canvas: React.FC = () => {
   return (
-    <Editor resolver={{ Button }}>
+    <Editor resolver={{ ...UserComponents }}>
       {/* 设置 Layout 为 100% 的高度和宽度 */}
       <Layout style={{ height: '100%', width: '100%' }}>
         {/* Header */}
@@ -26,8 +26,8 @@ export const Canvas: React.FC = () => {
           <Content style={{ padding: '0 24px', minHeight: '100%', backgroundColor: '#fff' }}>
             Main Content
             <Frame>
-              <Element is={Button} canvas>
-                Click me
+              <Element is="div" canvas>
+                <UserComponents.Button text={'Hello'} />
               </Element>
             </Frame>
           </Content>

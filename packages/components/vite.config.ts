@@ -16,10 +16,16 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/index.tsx'),
       name: 'MyComponentLibrary',
       formats: ['es'],
-      fileName: () => `index.js`,
+      fileName: "[name]",
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: [
+        "react", "react-dom",
+        /@craftjs\/core(\/.+)?/, /@craftjs\/utils(\/.+)?/,
+      ],
+      input: {
+        "index": "src/index.tsx",
+      },
       output: {
         globals: {
           react: 'React',
