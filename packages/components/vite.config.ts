@@ -2,6 +2,13 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import { resolve } from 'path';
+import pkg from './package.json';
+
+const external = [
+  "react", "react-dom",
+  ...Object.keys(pkg.dependencies || {}),
+  /@craftjs\/core(\/.+)?/, /@craftjs\/utils(\/.+)?/,
+];
 
 export default defineConfig({
   plugins: [
@@ -14,18 +21,12 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.tsx'),
-      name: 'MyComponentLibrary',
+      name: 'ComponentLibrary',
       formats: ['es'],
       fileName: "[name]",
     },
     rollupOptions: {
-      external: [
-        "react", "react-dom",
-        /@craftjs\/core(\/.+)?/, /@craftjs\/utils(\/.+)?/,
-      ],
-      input: {
-        "index": "src/index.tsx",
-      },
+      external,
       output: {
         globals: {
           react: 'React',

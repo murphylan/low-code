@@ -5,7 +5,9 @@ import { resolve } from 'path';
 import pkg from './package.json';
 
 const external = [
+  "react", "react-dom",
   ...Object.keys(pkg.dependencies || {}),
+  /@craftjs\/core(\/.+)?/, /@craftjs\/utils(\/.+)?/,
 ];
 
 export default defineConfig({
@@ -19,9 +21,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.tsx'),
-      name: 'MyComponentLibrary',
+      name: 'EditorLibrary',
       formats: ['es'],
-      fileName: () => `index.js`,
+      fileName: "[name]",
     },
     rollupOptions: {
       external,

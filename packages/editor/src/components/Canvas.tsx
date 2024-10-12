@@ -2,6 +2,8 @@ import React from 'react';
 import { Editor, Frame, Element } from '@craftjs/core';
 import { UserComponents } from '@low-code/components';
 import { Layout } from 'antd';
+import Sidebar from './Sidebar';
+import { SettingsPanel } from './SettingsPanel';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -20,6 +22,7 @@ export const Canvas: React.FC = () => {
           {/* Left Sidebar */}
           <Sider width="20%" style={{ backgroundColor: '#f0f2f5' }}>
             Left Sidebar
+            <Sidebar />
           </Sider>
 
           {/* Main Content */}
@@ -28,13 +31,15 @@ export const Canvas: React.FC = () => {
             <Frame>
               <Element is="div" canvas>
                 <UserComponents.Button text={'Hello'} />
+                <UserComponents.Button text={'world'} />
               </Element>
             </Frame>
           </Content>
 
           {/* Right Sidebar */}
           <Sider width="20%" style={{ backgroundColor: '#f0f2f5' }}>
-            Right Sidebar
+            属性面板
+            <SettingsPanel />
           </Sider>
         </Layout>
 
